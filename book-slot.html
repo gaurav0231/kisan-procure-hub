@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Arrival Slot - Kisan Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <div>
+          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-subtitle">Smart Agri-Procurement</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks"></ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="card">
+      <h2 class="card-title">Reserve Procurement Window</h2>
+      <p class="card-desc">Enter crop and transport details to secure an entry pass at your nearest mandi.</p>
+
+      <form id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="farmerName">Farmer Full Name *</label>
+            <input type="text" id="farmerName" placeholder="e.g. Gaurav Singh" required />
+          </div>
+          <div class="form-group">
+            <label for="farmerPhone">Mobile Number (For SMS Updates) *</label>
+            <input type="tel" id="farmerPhone" pattern="[0-9]{10}" placeholder="10-digit mobile number" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="centerSelect">Select Procurement Mandi *</label>
+            <select id="centerSelect" required>
+              <option value="Baraut Central Mandi Yard">Baraut Central Mandi Yard (Gate 1)</option>
+              <option value="Khekra Grain Procurement Sub-Center">Khekra Grain Procurement Sub-Center</option>
+              <option value="Baghpat Main Mandi Hub">Baghpat Main Mandi Hub</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cropType">Crop Type *</label>
+            <select id="cropType" required>
+              <option value="Wheat (Sharbati)">Wheat (Sharbati) - MSP ₹2,275/Qtl</option>
+              <option value="Mustard (Sarson)">Mustard (Sarson) - MSP ₹5,650/Qtl</option>
+              <option value="Paddy (Dhan)">Paddy (Dhan) - MSP ₹2,183/Qtl</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Select Arrival Time Window *</label>
+        <div class="slot-grid">
+          <label>
+            <input type="radio" name="arrivalSlot" value="08:00 AM - 09:00 AM" class="slot-radio" checked />
+            <div class="slot-box">
+              <span class="slot-time">08:00 - 09:00 AM</span>
+              <span class="slot-count">12 Slots Remaining</span>
+            </div>
+          </label>
+          <label>
+            <input type="radio" name="arrivalSlot" value="09:00 AM - 10:00 AM" class="slot-radio" />
+            <div class="slot-box">
+              <span class="slot-time">09:00 - 10:00 AM</span>
+              <span class="slot-count">6 Slots Remaining</span>
+            </div>
+          </label>
+          <label>
+            <input type="radio" name="arrivalSlot" value="10:00 AM - 11:00 AM" class="slot-radio" />
+            <div class="slot-box">
+              <span class="slot-time">10:00 - 11:00 AM</span>
+              <span class="slot-count">2 Slots (Filling Fast)</span>
+            </div>
+          </label>
+          <label>
+            <input type="radio" name="arrivalSlot" value="11:00 AM - 12:00 PM" class="slot-radio" />
+            <div class="slot-box">
+              <span class="slot-time">11:00 - 12:00 PM</span>
+              <span class="slot-count">19 Slots Remaining</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vehicleNo">Vehicle / Tractor Number</label>
+            <input type="text" id="vehicleNo" placeholder="e.g. UP-17-AT-2041" />
+          </div>
+          <div class="form-group">
+            <label for="cropQty">Estimated Quantity (Quintals) *</label>
+            <input type="number" id="cropQty" min="1" max="500" placeholder="e.g. 40" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate Mandi Gate Pass ➔</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <script src="script.js"></script>
+</body>
+</html>

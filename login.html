@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Kisan Mandi Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <div>
+          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-subtitle">Smart Agri-Procurement</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks"></ul>
+    </div>
+  </nav>
+
+  <main class="main-content" style="max-width: 480px;">
+    <div class="card">
+      <div class="tab-container" style="margin-bottom: 20px;">
+        <button type="button" class="tab-btn active" id="roleFarmerBtn">👨‍🌾 Farmer Login</button>
+        <button type="button" class="tab-btn" id="roleOperatorBtn">🏢 Mandi Operator</button>
+      </div>
+
+      <div class="card-header" style="margin-bottom: 16px;">
+        <h2 class="card-title" id="loginHeaderTitle">Farmer Portal Sign In</h2>
+        <p class="card-desc" id="loginHeaderSubtitle">Access slot reservation, token slips, and live payment DBT tracking.</p>
+      </div>
+
+      <form id="authForm">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label id="identifierLabel">Mobile Number *</label>
+          <input type="text" id="authIdentifier" placeholder="10-digit registered number" required />
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label>Password / Access PIN *</label>
+          <input type="password" id="authPassword" placeholder="Enter password or 4-digit PIN" required />
+        </div>
+
+        <div id="operatorFieldGroup" style="display: none; margin-bottom: 14px;">
+          <div class="form-group">
+            <label>Mandi Yard Station ID *</label>
+            <input type="text" id="authMandiStation" placeholder="e.g. BARAUT-GATE-01" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Sign In to Portal ➔</button>
+      </form>
+
+      <div style="margin-top: 20px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px dashed var(--border);">
+        <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); display: block; margin-bottom: 8px;">
+          ⚡ QUICK DEMO CREDENTIALS:
+        </span>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-outline" style="font-size: 0.75rem; flex: 1;" onclick="fillDemo('farmer')">Demo Farmer</button>
+          <button type="button" class="btn btn-outline" style="font-size: 0.75rem; flex: 1;" onclick="fillDemo('operator')">Demo Operator</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <script src="script.js"></script>
+  <script>
+    function fillDemo(role) {
+      if (role === 'farmer') {
+        document.getElementById('roleFarmerBtn').click();
+        document.getElementById('authIdentifier').value = "9876543210";
+        document.getElementById('authPassword').value = "1234";
+      } else {
+        document.getElementById('roleOperatorBtn').click();
+        document.getElementById('authIdentifier').value = "operator@mandi.gov.in";
+        document.getElementById('authPassword').value = "operator123";
+        document.getElementById('authMandiStation').value = "BARAUT-GATE-01";
+      }
+    }
+  </script>
+</body>
+</html>

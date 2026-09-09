@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Token Status - Kisan Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <div>
+          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-subtitle">Smart Agri-Procurement</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks"></ul>
+    </div>
+  </nav>
+
+  <main class="main-content" id="trackerContainer">
+    <div class="card" style="padding: 16px 24px;">
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="tokenSearchInput" placeholder="Enter Token ID (e.g. TKN-2026-9041) or Mobile..." />
+        <button id="lookupBtn" class="btn btn-secondary">Search</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="token-slip">
+        <div class="slip-header">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: bold; background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 4px;">ALLOCATED PASS</span>
+            <div id="slipTokenId" class="token-tag">TKN-2026-9041</div>
+          </div>
+          <button class="btn btn-outline" onclick="window.print()">🖨️ Print Slip</button>
+        </div>
+
+        <div class="details-grid">
+          <div><small style="color: #64748b; font-size: 0.75rem;">Farmer Name</small><p id="slipFarmer" style="font-weight: 700;">Gaurav Singh</p></div>
+          <div><small style="color: #64748b; font-size: 0.75rem;">Procurement Center</small><p id="slipCenter" style="font-weight: 700;">Baraut Central Mandi Yard</p></div>
+          <div><small style="color: #64748b; font-size: 0.75rem;">Arrival Time Slot</small><p id="slipSlot" style="font-weight: 700;">09:00 AM - 10:00 AM</p></div>
+          <div><small style="color: #64748b; font-size: 0.75rem;">Crop & Quantity</small><p id="slipCrop" style="font-weight: 700;">Wheat (40 Qtl)</p></div>
+          <div><small style="color: #64748b; font-size: 0.75rem;">Vehicle Reg No.</small><p id="slipVehicle" style="font-weight: 700;">UP-17-AT-4011</p></div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 12px;">Live Mandi Progression</h3>
+      <div class="timeline">
+        <div class="timeline-step" data-step="1">
+          <div class="step-node">✓</div>
+          <div class="step-content"><h4>1. Slot Reserved & Pass Issued</h4><p>Arrive within your assigned 1-hour window.</p></div>
+        </div>
+        <div class="timeline-step" data-step="2">
+          <div class="step-node">⏳</div>
+          <div class="step-content"><h4>2. Gate Arrival & Check-In</h4><p>Tractor barcode scanned at Gate 1 security barrier.</p></div>
+        </div>
+        <div class="timeline-step" data-step="3">
+          <div class="step-node">•</div>
+          <div class="step-content"><h4>3. Quality & Moisture Assessment</h4><p>Moisture lab test under FAQ standards (Moisture &lt; 12%).</p></div>
+        </div>
+        <div class="timeline-step" data-step="4">
+          <div class="step-node">•</div>
+          <div class="step-content"><h4>4. Weighbridge Gross/Tare Scale</h4><p>Full gross weight recorded minus tractor tare weight.</p></div>
+        </div>
+        <div class="timeline-step" data-step="5">
+          <div class="step-node">•</div>
+          <div class="step-content"><h4>5. DBT Bank Payment Disbursal</h4><p>Direct electronic transfer authorized via PFMS.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <script src="script.js"></script>
+</body>
+</html>

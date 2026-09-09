@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Ledger - Kisan Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <div>
+          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-subtitle">Smart Agri-Procurement</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks"></ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="card">
+      <h2 class="card-title">Direct Benefit Transfer (DBT) Ledger</h2>
+      <p class="card-desc">Track payment clearances sanctioned through the Public Financial Management System (PFMS).</p>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+        <input type="text" id="payQuery" placeholder="Search by Token ID or Mobile Number..." />
+        <button class="btn btn-secondary" onclick="searchPayment()">Verify PFMS</button>
+      </div>
+
+      <div class="token-slip" style="background: white; border-color: #cbd5e1;">
+        <div class="slip-header">
+          <div>
+            <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">PFMS REF: PFMS-2026-UP-91823</span>
+            <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary); margin-top: 4px;">₹79,625.00</div>
+          </div>
+          <span style="background: #dcfce7; color: #166534; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem;">● CREDITED TO BANK</span>
+        </div>
+
+        <div class="details-grid">
+          <div><small style="color: var(--text-muted);">Beneficiary Name</small><p><strong>Gaurav Singh</strong></p></div>
+          <div><small style="color: var(--text-muted);">Token Reference</small><p><strong id="payTokenRef">TKN-2026-9041</strong></p></div>
+          <div><small style="color: var(--text-muted);">Net Sold Weight</small><p><strong>35.00 Quintal (Net)</strong></p></div>
+          <div><small style="color: var(--text-muted);">MSP Rate Applied</small><p><strong>₹2,275 / Qtl (Wheat)</strong></p></div>
+          <div><small style="color: var(--text-muted);">Bank & Account</small><p><strong>State Bank of India (••• 4019)</strong></p></div>
+          <div><small style="color: var(--text-muted);">Bank UTR Reference</small><p style="font-family: monospace;"><strong>UTR928371920381</strong></p></div>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <small style="color: #64748b;">Sanctioned Timestamp: Today, 11:45 AM</small>
+          <button class="btn btn-outline" onclick="window.print()">📥 Download Receipt</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <script src="script.js"></script>
+  <script>
+    function searchPayment() {
+      const q = document.getElementById("payQuery").value.trim();
+      const current = getActiveToken();
+      if (q && q !== current.token && q !== current.phone) {
+        alert("No other record found for query. Displaying active session data.");
+      }
+      document.getElementById("payTokenRef").textContent = current.token;
+    }
+  </script>
+</body>
+</html>

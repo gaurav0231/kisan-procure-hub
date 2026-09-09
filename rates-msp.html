@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandi MSP & Rates - Kisan Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <div>
+          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-subtitle">Smart Agri-Procurement</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks"></ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="card">
+      <h2 class="card-title">Government Minimum Support Prices (MSP)</h2>
+      <p class="card-desc">Guaranteed procurement prices and allowable FAQ quality standards.</p>
+
+      <table class="rate-table">
+        <thead>
+          <tr><th>Commodity</th><th>Variety</th><th>Government MSP</th><th>Allowed Moisture</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Wheat (गेहूं)</strong></td><td>Sharbati / FAQ</td><td><span class="badge-msp">₹2,275 / Qtl</span></td><td>Max 12.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
+          <tr><td><strong>Mustard (सरसों)</strong></td><td>Yellow / Black</td><td><span class="badge-msp">₹5,650 / Qtl</span></td><td>Max 8.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
+          <tr><td><strong>Gram / Chana (चना)</strong></td><td>Desi / Kabuli</td><td><span class="badge-msp">₹5,440 / Qtl</span></td><td>Max 10.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
+          <tr><td><strong>Paddy (धान)</strong></td><td>Grade A</td><td><span class="badge-msp">₹2,203 / Qtl</span></td><td>Max 17.0%</td><td><span style="color: #ca8a04; font-weight: 700;">● Ending Soon</span></td></tr>
+        </tbody>
+      </table>
+
+      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 24px;">
+        <h3 style="font-size: 1.05rem; margin-bottom: 8px; color: var(--primary-dark);">🧮 Instant DBT Payout Calculator</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">Estimate gross bank credit before booking your slot.</p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Select Crop</label>
+            <select id="calcCrop" onchange="computePayout()">
+              <option value="2275">Wheat (₹2,275 / Qtl)</option>
+              <option value="5650">Mustard (₹5,650 / Qtl)</option>
+              <option value="5440">Gram / Chana (₹5,440 / Qtl)</option>
+              <option value="2203">Paddy (₹2,203 / Qtl)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Quantity (Quintals)</label>
+            <input type="number" id="calcQty" value="40" min="1" oninput="computePayout()" />
+          </div>
+        </div>
+
+        <div style="background: white; border: 1.5px dashed var(--border); border-radius: 8px; padding: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Estimated Direct Benefit Transfer (DBT):</span>
+            <div id="calcPayout" style="font-size: 1.6rem; font-weight: 900; color: var(--primary); font-family: monospace;">₹91,000</div>
+          </div>
+          <a href="book-slot.html" class="btn btn-primary" style="width: auto; padding: 10px 18px;">Book Slot at this Rate ➔</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <script src="script.js"></script>
+  <script>
+    function computePayout() {
+      const price = parseFloat(document.getElementById("calcCrop").value) || 0;
+      const qty = parseFloat(document.getElementById("calcQty").value) || 0;
+      document.getElementById("calcPayout").textContent = "₹" + (price * qty).toLocaleString("en-IN");
+    }
+    computePayout();
+  </script>
+</body>
+</html>
