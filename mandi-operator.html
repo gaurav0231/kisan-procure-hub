@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operator Console - Mandi Hub</title>
+  <title>Mandi Operator Console • ई-उपार्जन Pro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,57 +22,79 @@
   </nav>
 
   <main class="main-content" id="operatorConsole">
-    <div class="card" style="border-left: 5px solid var(--secondary);">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+    <!-- Active Token Header -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
         <div>
-          <small style="color: #64748b; font-weight: bold;">ACTIVE YARD TOKEN</small>
-          <h2 id="opTokenId" style="font-size: 1.5rem; font-family: monospace; color: var(--secondary);">TKN-2026-9041</h2>
-          <p style="font-size: 0.9rem; color: #334155;">Farmer: <strong id="opFarmer">Gaurav Singh</strong></p>
+          <h2 class="card-title">🏢 Mandi Operator Yard Workstation</h2>
+          <p class="card-desc">Baraut Central Mandi Terminal #BARAUT-GATE-01</p>
         </div>
         <div style="text-align: right;">
-          <span id="opCurrentStage" style="background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 0.85rem;">
-            Step 2 of 5
-          </span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">ACTIVE YARD TOKEN:</span>
+          <div class="token-tag" id="opTokenId">TKN-2026-9041</div>
+          <span style="font-size: 0.85rem; font-weight: 700;" id="opFarmer">Farmer: Gaurav Singh</span>
+          <p style="font-size: 0.78rem; color: var(--primary); font-weight: 700;" id="opCurrentStage">Step 2 of 5</p>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h3 class="card-title">Mandi Operator Actions</h3>
-      <p class="card-desc">Trigger station actions below. Changes instantly synchronize across all pages.</p>
+    <!-- Station Actions -->
+    <div class="grid-3">
+      <!-- Station 1 -->
+      <div class="card">
+        <h3 class="card-title">1. Gate Check-In</h3>
+        <p class="card-desc">Scan vehicle arrival pass at entrance.</p>
+        <button class="btn btn-primary" id="btnCheckin">Log Gate Entry ➔</button>
+      </div>
 
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div style="padding: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-          <div><strong>Step 2: Mandi Entry Gate</strong><p style="font-size: 0.8rem; color: #64748b;">Verify vehicle and mark entrance barrier crossed.</p></div>
-          <button id="btnCheckin" class="btn btn-secondary">Confirm Gate Entry</button>
+      <!-- Station 2 -->
+      <div class="card">
+        <h3 class="card-title">2. Quality & Moisture</h3>
+        <p class="card-desc">Record digital moisture probe reading.</p>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label>Moisture % (Permissible &le; 12%)</label>
+          <input type="number" step="0.1" id="qcMoistureInput" value="11.2" />
         </div>
+        <button class="btn btn-secondary" id="btnQC" style="background: var(--accent);">Approve QC Test ➔</button>
+      </div>
 
-        <div style="padding: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px;">
-          <div style="margin-bottom: 10px;"><strong>Step 3: Moisture & Quality Grading</strong><p style="font-size: 0.8rem; color: #64748b;">Record grain analyzer percentage reading.</p></div>
-          <div style="display: flex; gap: 10px;">
-            <input type="number" id="qcMoistureInput" value="11.2" step="0.1" style="max-width: 150px;" placeholder="Moisture %" />
-            <button id="btnQC" class="btn btn-primary" style="width: auto;">Approve Quality</button>
+      <!-- Station 3 -->
+      <div class="card">
+        <h3 class="card-title">3. Weighbridge Log</h3>
+        <p class="card-desc">Record gross loaded vs. tare empty weight.</p>
+        <div class="form-row" style="margin-bottom: 8px;">
+          <div class="form-group">
+            <label>Gross (Kg)</label>
+            <input type="number" id="grossWeightInput" value="4850" />
+          </div>
+          <div class="form-group">
+            <label>Tare (Kg)</label>
+            <input type="number" id="tareWeightInput" value="1350" />
           </div>
         </div>
+        <button class="btn btn-secondary" id="btnWeighment">Submit Scale Log ➔</button>
+      </div>
+    </div>
 
-        <div style="padding: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px;">
-          <div style="margin-bottom: 10px;"><strong>Step 4: Weighbridge Scale Input</strong><p style="font-size: 0.8rem; color: #64748b;">Log gross loaded truck scale and unloaded tare scale.</p></div>
-          <div class="form-row" style="margin-bottom: 10px;">
-            <div class="form-group"><label>Gross Weight (kg)</label><input type="number" id="grossWeightInput" value="4850" /></div>
-            <div class="form-group"><label>Tare Weight (kg)</label><input type="number" id="tareWeightInput" value="1350" /></div>
-          </div>
-          <button id="btnWeighment" class="btn btn-primary">Confirm Net Weight</button>
+    <!-- Station 4 -->
+    <div class="card" style="margin-top: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 class="card-title">4. Sanction Direct Benefit Transfer (DBT)</h3>
+          <p class="card-desc">Transmit approved procurement file directly to PFMS bank gateway.</p>
         </div>
-
-        <div style="padding: 14px; background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-          <div><strong>Step 5: Direct Benefit Transfer (DBT)</strong><p style="font-size: 0.8rem; color: #64748b;">Authorize automatic release of funds via PFMS.</p></div>
-          <button id="btnPayment" class="btn btn-primary" style="background: #16a34a; width: auto;">Authorize DBT Payment</button>
-        </div>
+        <button class="btn btn-primary" id="btnPayment" style="width: auto; padding: 12px 24px;">Clear DBT Payment ➔</button>
       </div>
     </div>
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

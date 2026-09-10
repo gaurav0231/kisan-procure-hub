@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Track Token Status - Kisan Portal</title>
+  <title>Track Token Status • ई-उपार्जन Pro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,59 +22,100 @@
   </nav>
 
   <main class="main-content" id="trackerContainer">
-    <div class="card" style="padding: 16px 24px;">
+    <!-- Lookup Filter -->
+    <div class="card" style="max-width: 680px; margin: 0 auto 24px auto;">
+      <h2 class="card-title">📍 Live Yard Token Tracking</h2>
+      <p class="card-desc">Check vehicle queue position, lab moisture grades, and net scale weight.</p>
       <div style="display: flex; gap: 10px;">
-        <input type="text" id="tokenSearchInput" placeholder="Enter Token ID (e.g. TKN-2026-9041) or Mobile..." />
-        <button id="lookupBtn" class="btn btn-secondary">Search</button>
+        <input type="text" id="tokenSearchInput" placeholder="Enter Token ID (e.g. TKN-2026-9041) or Mobile" />
+        <button type="button" class="btn btn-secondary" id="lookupBtn">Track</button>
       </div>
     </div>
 
-    <div class="card">
+    <!-- Live Digital Slip -->
+    <div class="card" style="max-width: 680px; margin: 0 auto;">
       <div class="token-slip">
         <div class="slip-header">
           <div>
-            <span style="font-size: 0.75rem; font-weight: bold; background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 4px;">ALLOCATED PASS</span>
-            <div id="slipTokenId" class="token-tag">TKN-2026-9041</div>
+            <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);">Digital Token Pass</span>
+            <div class="token-tag" id="slipTokenId">TKN-2026-9041</div>
           </div>
-          <button class="btn btn-outline" onclick="window.print()">🖨️ Print Slip</button>
+          <span class="user-badge">Status: Live Processing</span>
         </div>
 
         <div class="details-grid">
-          <div><small style="color: #64748b; font-size: 0.75rem;">Farmer Name</small><p id="slipFarmer" style="font-weight: 700;">Gaurav Singh</p></div>
-          <div><small style="color: #64748b; font-size: 0.75rem;">Procurement Center</small><p id="slipCenter" style="font-weight: 700;">Baraut Central Mandi Yard</p></div>
-          <div><small style="color: #64748b; font-size: 0.75rem;">Arrival Time Slot</small><p id="slipSlot" style="font-weight: 700;">09:00 AM - 10:00 AM</p></div>
-          <div><small style="color: #64748b; font-size: 0.75rem;">Crop & Quantity</small><p id="slipCrop" style="font-weight: 700;">Wheat (40 Qtl)</p></div>
-          <div><small style="color: #64748b; font-size: 0.75rem;">Vehicle Reg No.</small><p id="slipVehicle" style="font-weight: 700;">UP-17-AT-4011</p></div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Farmer:</span>
+            <p><strong id="slipFarmer">Gaurav Singh</strong></p>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Mandi Yard:</span>
+            <p><strong id="slipCenter">Baraut Central Mandi Yard</strong></p>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Crop & Qty:</span>
+            <p><strong id="slipCrop">Wheat (40 Qtl)</strong></p>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Vehicle Plate:</span>
+            <p><strong id="slipVehicle">UP-17-AT-4011</strong></p>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Time Slot:</span>
+            <p><strong id="slipSlot">09:00 AM - 10:00 AM</strong></p>
+          </div>
         </div>
       </div>
 
-      <h3 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 12px;">Live Mandi Progression</h3>
+      <!-- Linear Timeline -->
+      <h3 class="card-title" style="margin-top: 20px;">Procurement Stages</h3>
       <div class="timeline">
-        <div class="timeline-step" data-step="1">
+        <div class="timeline-step step-completed" data-step="1">
           <div class="step-node">✓</div>
-          <div class="step-content"><h4>1. Slot Reserved & Pass Issued</h4><p>Arrive within your assigned 1-hour window.</p></div>
+          <div class="step-content">
+            <h4>1. Slot Reservation Confirmed</h4>
+            <p>1-Hour entry pass generated & allocated to procurement calendar.</p>
+          </div>
         </div>
-        <div class="timeline-step" data-step="2">
+        <div class="timeline-step step-completed" data-step="2">
+          <div class="step-node">✓</div>
+          <div class="step-content">
+            <h4>2. Mandi Gate Arrival & Check-In</h4>
+            <p>Vehicle entry scanned at gate station. Mandi lane designated.</p>
+          </div>
+        </div>
+        <div class="timeline-step step-active" data-step="3">
           <div class="step-node">⏳</div>
-          <div class="step-content"><h4>2. Gate Arrival & Check-In</h4><p>Tractor barcode scanned at Gate 1 security barrier.</p></div>
-        </div>
-        <div class="timeline-step" data-step="3">
-          <div class="step-node">•</div>
-          <div class="step-content"><h4>3. Quality & Moisture Assessment</h4><p>Moisture lab test under FAQ standards (Moisture &lt; 12%).</p></div>
+          <div class="step-content">
+            <h4>3. Grain Quality & Moisture Inspection</h4>
+            <p>Moisture lab test underway (Permissible: &le; 12.0%).</p>
+          </div>
         </div>
         <div class="timeline-step" data-step="4">
           <div class="step-node">•</div>
-          <div class="step-content"><h4>4. Weighbridge Gross/Tare Scale</h4><p>Full gross weight recorded minus tractor tare weight.</p></div>
+          <div class="step-content">
+            <h4>4. Weighbridge Scale Logging</h4>
+            <p>Gross loaded weighment minus tare tractor empty weight.</p>
+          </div>
         </div>
         <div class="timeline-step" data-step="5">
           <div class="step-node">•</div>
-          <div class="step-content"><h4>5. DBT Bank Payment Disbursal</h4><p>Direct electronic transfer authorized via PFMS.</p></div>
+          <div class="step-content">
+            <h4>5. Direct Benefit Transfer (DBT) Cleared</h4>
+            <p>Payment file sanctioned via PFMS straight to farmer bank account.</p>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

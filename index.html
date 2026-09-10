@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kisan Mandi Procurement Portal</title>
+  <title>ई-उपार्जन Pro • Unified Mandi Gateway</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- Top Real-time Mandi Rate Ticker -->
+  <div class="mandi-ticker-strip">
+    <div class="ticker-content">
+      <span>🌾 <strong>Wheat (Sharbati):</strong> ₹2,425/Qtl <em class="up">▲ +₹150</em></span>
+      <span>🌼 <strong>Mustard:</strong> ₹5,950/Qtl <em class="up">▲ +₹300</em></span>
+      <span>🌾 <strong>Paddy (Common):</strong> ₹2,300/Qtl <em class="steady">● Stable</em></span>
+      <span>🌱 <strong>Gram (Chana):</strong> ₹5,650/Qtl <em class="up">▲ +₹210</em></span>
+      <span>⚡ <strong>Gate Status:</strong> Baraut Yard Normal (Turnaround: ~38m)</span>
+    </div>
+  </div>
+
+  <!-- Universal Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="brand">
@@ -21,52 +34,147 @@
     </div>
   </nav>
 
-  <header class="hero-banner">
-    <h1>Zero-Queue Mandi Procurement</h1>
-    <p>Eliminate multi-day waits at procurement yards with guaranteed arrival windows and transparent DBT bank clearances.</p>
+  <!-- Modern Hero & Telemetry Banner -->
+  <header class="portal-hero">
+    <div class="hero-badge">Official Agricultural Yard Logistics Portal</div>
+    <h1 class="hero-main-title">Zero-Queue Digital Mandi Inflow</h1>
+    <p class="hero-subtext">Automated slot tokens, instant moisture QC, scale telemetry, and Direct Benefit Transfer (DBT) clearance in minutes.</p>
+
+    <!-- Quick Telemetry Counters -->
+    <div class="kpi-banner">
+      <div class="kpi-pill">
+        <span class="kpi-num">1,420+</span>
+        <span class="kpi-lbl">Tokens Today</span>
+      </div>
+      <div class="kpi-pill">
+        <span class="kpi-num">38 Mins</span>
+        <span class="kpi-lbl">Avg. Turnaround</span>
+      </div>
+      <div class="kpi-pill">
+        <span class="kpi-num">₹2.84 Cr</span>
+        <span class="kpi-lbl">DBT Cleared</span>
+      </div>
+      <div class="kpi-pill">
+        <span class="kpi-num green-text">99.2%</span>
+        <span class="kpi-lbl">Yard Clearance Rate</span>
+      </div>
+    </div>
   </header>
 
   <main class="main-content">
-    <div class="grid-3">
-      <a href="book-slot.html" class="action-card">
-        <div>
-          <div class="action-icon">📅</div>
-          <h2 class="card-title">Book Arrival Slot</h2>
-          <p class="card-desc">Reserve a 1-hour entry window to bypass multi-day truck queues at procurement gates.</p>
-        </div>
-        <span class="btn btn-primary" style="margin-top: 15px;">Book Gate Pass ➔</span>
-      </a>
 
-      <a href="track-status.html" class="action-card orange">
-        <div>
-          <div class="action-icon">📍</div>
-          <h2 class="card-title">Track Token Status</h2>
-          <p class="card-desc">Check vehicle check-in, moisture grading, net weighment, and payment sanctioning.</p>
-        </div>
-        <span class="btn btn-secondary" style="margin-top: 15px; background: var(--accent);">Live Tracking ➔</span>
-      </a>
+    <!-- Core Actions Section -->
+    <section class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Farmer & Operator Portals</h2>
+        <span class="section-sub">Choose an operation to proceed</span>
+      </div>
 
-      <a href="rates-msp.html" class="action-card blue">
-        <div>
-          <div class="action-icon">💰</div>
-          <h2 class="card-title">Live MSP Rates</h2>
-          <p class="card-desc">Check official MSP prices, FAQ moisture rules, and compute your total payout estimation.</p>
-        </div>
-        <span class="btn btn-secondary" style="margin-top: 15px;">View MSP & Calc ➔</span>
-      </a>
-    </div>
+      <div class="grid-3 modern-actions">
+        <!-- Action 1 -->
+        <a href="book-slot.html" class="glass-action-card green-accent">
+          <div class="card-icon-bubble">📅</div>
+          <div class="card-meta">
+            <span class="status-chip chip-green">Gate Clearance</span>
+            <h3>Book Arrival Slot</h3>
+            <p>Lock a guaranteed 1-hour entry window to bypass tractor yard queues.</p>
+          </div>
+          <div class="action-footer">
+            <span>Get Slot Pass</span>
+            <span class="arrow-circle">➔</span>
+          </div>
+        </a>
 
-    <div class="card" style="margin-top: 24px;">
-      <h3 class="card-title">📢 Mandatory Procurement Guidelines</h3>
-      <ul style="padding-left: 20px; font-size: 0.9rem; line-height: 1.8; color: #334155;">
-        <li>Ensure grain moisture is below <strong>12.0% for wheat</strong> and <strong>8.0% for mustard</strong>.</li>
-        <li>Vehicles must arrive within their <strong>1-hour designated window</strong> on the digital pass.</li>
-        <li>Carry original Aadhaar and bank account documentation for instant Direct Benefit Transfer (DBT) credit.</li>
-      </ul>
-    </div>
+        <!-- Action 2 -->
+        <a href="track-status.html" class="glass-action-card amber-accent">
+          <div class="card-icon-bubble">📍</div>
+          <div class="card-meta">
+            <span class="status-chip chip-amber">Live Telemetry</span>
+            <h3>Track Token Status</h3>
+            <p>Monitor gate check-in, moisture grading, net scale weights, and PFMS payments.</p>
+          </div>
+          <div class="action-footer">
+            <span>Check Token</span>
+            <span class="arrow-circle">➔</span>
+          </div>
+        </a>
+
+        <!-- Action 3 -->
+        <a href="rates-msp.html" class="glass-action-card blue-accent">
+          <div class="card-icon-bubble">💰</div>
+          <div class="card-meta">
+            <span class="status-chip chip-blue">Market Benchmark</span>
+            <h3>MSP Calculator</h3>
+            <p>Review standard moisture tolerances and calculate your total gross payout.</p>
+          </div>
+          <div class="action-footer">
+            <span>Explore Rates</span>
+            <span class="arrow-circle">➔</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Operational Data & Chart Telemetry -->
+    <section class="section-container">
+      <div class="dashboard-panel">
+        <div class="panel-header">
+          <div>
+            <h3 class="panel-title">Yard Flow & Commodity Distribution</h3>
+            <p class="panel-subtitle">Real-time arrival rate versus scale discharge logs</p>
+          </div>
+          <span class="live-pulse"><span class="dot"></span> Live Telemetry</span>
+        </div>
+
+        <div class="charts-wrapper">
+          <div class="chart-box large">
+            <div class="chart-label">Hourly Inflow (Tractors/Trucks) vs Clearance</div>
+            <canvas id="homeInflowChart" height="150"></canvas>
+          </div>
+          <div class="chart-box small">
+            <div class="chart-label">Commodity Procured Today</div>
+            <canvas id="homeCropShareChart" height="150"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Procurement Directives Checklist -->
+    <section class="section-container">
+      <div class="directives-strip">
+        <div class="directive-box">
+          <div class="d-icon">🌾</div>
+          <div class="d-text">
+            <strong>Moisture Mandate:</strong>
+            <p>Wheat must be ≤ 12.0%, Mustard ≤ 8.0% for immediate gate approval.</p>
+          </div>
+        </div>
+        <div class="directive-box">
+          <div class="d-icon">⏱️</div>
+          <div class="d-text">
+            <strong>Arrival Window:</strong>
+            <p>Present digital token within 60 mins of slot time to prevent invalidation.</p>
+          </div>
+        </div>
+        <div class="directive-box">
+          <div class="d-icon">💳</div>
+          <div class="d-text">
+            <strong>DBT Settlement:</strong>
+            <p>Ensure Aadhaar is linked to your bank account for 24-hr PFMS disbursements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>Built for Zero Farmer Wait Times • © 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payment Ledger - Kisan Portal</title>
+  <title>Direct Benefit Transfer (DBT) Ledger • ई-उपार्जन Pro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,51 +23,58 @@
 
   <main class="main-content">
     <div class="card">
-      <h2 class="card-title">Direct Benefit Transfer (DBT) Ledger</h2>
-      <p class="card-desc">Track payment clearances sanctioned through the Public Financial Management System (PFMS).</p>
-
-      <div style="display: flex; gap: 10px; margin-bottom: 24px;">
-        <input type="text" id="payQuery" placeholder="Search by Token ID or Mobile Number..." />
-        <button class="btn btn-secondary" onclick="searchPayment()">Verify PFMS</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <h2 class="card-title">💳 Direct Benefit Transfer (DBT) Ledger</h2>
+          <p class="card-desc">Public Financial Management System (PFMS) Mandi Settlement Records</p>
+        </div>
+        <span class="badge-msp" style="background: rgba(2, 132, 199, 0.15); color: var(--secondary);">PFMS Gateway Live</span>
       </div>
 
-      <div class="token-slip" style="background: white; border-color: #cbd5e1;">
-        <div class="slip-header">
-          <div>
-            <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 4px;">PFMS REF: PFMS-2026-UP-91823</span>
-            <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary); margin-top: 4px;">₹79,625.00</div>
-          </div>
-          <span style="background: #dcfce7; color: #166534; font-weight: bold; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem;">● CREDITED TO BANK</span>
-        </div>
-
-        <div class="details-grid">
-          <div><small style="color: var(--text-muted);">Beneficiary Name</small><p><strong>Gaurav Singh</strong></p></div>
-          <div><small style="color: var(--text-muted);">Token Reference</small><p><strong id="payTokenRef">TKN-2026-9041</strong></p></div>
-          <div><small style="color: var(--text-muted);">Net Sold Weight</small><p><strong>35.00 Quintal (Net)</strong></p></div>
-          <div><small style="color: var(--text-muted);">MSP Rate Applied</small><p><strong>₹2,275 / Qtl (Wheat)</strong></p></div>
-          <div><small style="color: var(--text-muted);">Bank & Account</small><p><strong>State Bank of India (••• 4019)</strong></p></div>
-          <div><small style="color: var(--text-muted);">Bank UTR Reference</small><p style="font-family: monospace;"><strong>UTR928371920381</strong></p></div>
-        </div>
-
-        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <small style="color: #64748b;">Sanctioned Timestamp: Today, 11:45 AM</small>
-          <button class="btn btn-outline" onclick="window.print()">📥 Download Receipt</button>
-        </div>
-      </div>
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Payment UTR Ref</th>
+            <th>Farmer Beneficiary</th>
+            <th>Crop (Net Qtl)</th>
+            <th>Amount Paid</th>
+            <th>Disbursement Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>PFMS-2026-891024</code></td>
+            <td>Gaurav Singh</td>
+            <td>Wheat (40.0 Qtl)</td>
+            <td><strong>₹97,000.00</strong></td>
+            <td><span class="badge-msp">Bank Credited</span></td>
+          </tr>
+          <tr>
+            <td><code>PFMS-2026-891025</code></td>
+            <td>Ramesh Kumar</td>
+            <td>Mustard (22.5 Qtl)</td>
+            <td><strong>₹1,33,875.00</strong></td>
+            <td><span class="badge-msp">Bank Credited</span></td>
+          </tr>
+          <tr>
+            <td><code>PFMS-2026-891026</code></td>
+            <td>Kuldeep Sharma</td>
+            <td>Gram (30.0 Qtl)</td>
+            <td><strong>₹1,69,500.00</strong></td>
+            <td><span class="badge-msp" style="background: rgba(202, 138, 4, 0.15); color: var(--accent);">Processing</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
-  <script>
-    function searchPayment() {
-      const q = document.getElementById("payQuery").value.trim();
-      const current = getActiveToken();
-      if (q && q !== current.token && q !== current.phone) {
-        alert("No other record found for query. Displaying active session data.");
-      }
-      document.getElementById("payTokenRef").textContent = current.token;
-    }
-  </script>
 </body>
 </html>

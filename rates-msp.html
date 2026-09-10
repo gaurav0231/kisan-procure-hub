@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mandi MSP & Rates - Kisan Portal</title>
+  <title>Official MSP Rates & Payout Calculator • ई-उपार्जन Pro</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,61 +24,138 @@
 
   <main class="main-content">
     <div class="card">
-      <h2 class="card-title">Government Minimum Support Prices (MSP)</h2>
-      <p class="card-desc">Guaranteed procurement prices and allowable FAQ quality standards.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div>
+          <h2 class="card-title">💰 Minimum Support Price (MSP) 2026-27</h2>
+          <p class="card-desc">Approved Cabinet Committee on Economic Affairs (CCEA) Rates</p>
+        </div>
+        <span class="badge-msp">Official MSP Gazetted</span>
+      </div>
 
       <table class="rate-table">
         <thead>
-          <tr><th>Commodity</th><th>Variety</th><th>Government MSP</th><th>Allowed Moisture</th><th>Status</th></tr>
+          <tr>
+            <th>Commodity</th>
+            <th>Type / Season</th>
+            <th>Max Moisture %</th>
+            <th>Govt MSP (₹ / Qtl)</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td><strong>Wheat (गेहूं)</strong></td><td>Sharbati / FAQ</td><td><span class="badge-msp">₹2,275 / Qtl</span></td><td>Max 12.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
-          <tr><td><strong>Mustard (सरसों)</strong></td><td>Yellow / Black</td><td><span class="badge-msp">₹5,650 / Qtl</span></td><td>Max 8.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
-          <tr><td><strong>Gram / Chana (चना)</strong></td><td>Desi / Kabuli</td><td><span class="badge-msp">₹5,440 / Qtl</span></td><td>Max 10.0%</td><td><span style="color: #15803d; font-weight: 700;">● Active</span></td></tr>
-          <tr><td><strong>Paddy (धान)</strong></td><td>Grade A</td><td><span class="badge-msp">₹2,203 / Qtl</span></td><td>Max 17.0%</td><td><span style="color: #ca8a04; font-weight: 700;">● Ending Soon</span></td></tr>
+          <tr>
+            <td><strong>Wheat (गेहूं)</strong></td>
+            <td>Rabi / Sharbati</td>
+            <td>12.0%</td>
+            <td><span class="badge-msp">₹2,425.00</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mustard (सरसों)</strong></td>
+            <td>Rabi / RM</td>
+            <td>8.0%</td>
+            <td><span class="badge-msp">₹5,950.00</span></td>
+          </tr>
+          <tr>
+            <td><strong>Gram (चना)</strong></td>
+            <td>Rabi / Desi</td>
+            <td>10.0%</td>
+            <td><span class="badge-msp">₹5,650.00</span></td>
+          </tr>
+          <tr>
+            <td><strong>Barley (जौ)</strong></td>
+            <td>Rabi / Feed</td>
+            <td>12.0%</td>
+            <td><span class="badge-msp">₹1,980.00</span></td>
+          </tr>
+          <tr>
+            <td><strong>Paddy (धान)</strong></td>
+            <td>Kharif / Grade A</td>
+            <td>17.0%</td>
+            <td><span class="badge-msp">₹2,320.00</span></td>
+          </tr>
         </tbody>
       </table>
+    </div>
 
-      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 24px;">
-        <h3 style="font-size: 1.05rem; margin-bottom: 8px; color: var(--primary-dark);">🧮 Instant DBT Payout Calculator</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">Estimate gross bank credit before booking your slot.</p>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label>Select Crop</label>
-            <select id="calcCrop" onchange="computePayout()">
-              <option value="2275">Wheat (₹2,275 / Qtl)</option>
-              <option value="5650">Mustard (₹5,650 / Qtl)</option>
-              <option value="5440">Gram / Chana (₹5,440 / Qtl)</option>
-              <option value="2203">Paddy (₹2,203 / Qtl)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Quantity (Quintals)</label>
-            <input type="number" id="calcQty" value="40" min="1" oninput="computePayout()" />
-          </div>
+    <!-- Payout Calculator -->
+    <div class="card">
+      <h3 class="card-title">🧮 Instant Farmer Payout Estimator</h3>
+      <p class="card-desc">Calculate estimated DBT account disbursement before entering the mandi yard.</p>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Select Crop</label>
+          <select id="calcCrop" onchange="runPayoutCalc()">
+            <option value="2425">Wheat (₹2,425/Qtl)</option>
+            <option value="5950">Mustard (₹5,950/Qtl)</option>
+            <option value="5650">Gram / Chana (₹5,650/Qtl)</option>
+            <option value="1980">Barley (₹1,980/Qtl)</option>
+          </select>
         </div>
-
-        <div style="background: white; border: 1.5px dashed var(--border); border-radius: 8px; padding: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Estimated Direct Benefit Transfer (DBT):</span>
-            <div id="calcPayout" style="font-size: 1.6rem; font-weight: 900; color: var(--primary); font-family: monospace;">₹91,000</div>
-          </div>
-          <a href="book-slot.html" class="btn btn-primary" style="width: auto; padding: 10px 18px;">Book Slot at this Rate ➔</a>
+        <div class="form-group">
+          <label>Total Net Weight (Quintals)</label>
+          <input type="number" id="calcQty" value="40" min="1" oninput="runPayoutCalc()" />
         </div>
       </div>
+
+      <div style="background: var(--slip-bg); padding: 18px; border-radius: 12px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+        <div>
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Net Direct Benefit Transfer (DBT):</span>
+          <div style="font-size: 1.8rem; font-weight: 900; color: var(--primary); font-family: monospace;" id="calcTotalResult">₹97,000.00</div>
+        </div>
+        <button class="btn btn-secondary" onclick="window.location.href='book-slot.html'">Book Slot for this Crop ➔</button>
+      </div>
+    </div>
+
+    <!-- 5-Year MSP Trend Line Chart -->
+    <div class="card">
+      <h3 class="card-title">📈 5-Year MSP Growth Telemetry (₹ / Qtl)</h3>
+      <canvas id="mspTrendChart" height="120"></canvas>
     </div>
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
   <script>
-    function computePayout() {
-      const price = parseFloat(document.getElementById("calcCrop").value) || 0;
+    function runPayoutCalc() {
+      const rate = parseFloat(document.getElementById("calcCrop").value) || 0;
       const qty = parseFloat(document.getElementById("calcQty").value) || 0;
-      document.getElementById("calcPayout").textContent = "₹" + (price * qty).toLocaleString("en-IN");
+      const total = rate * qty;
+      document.getElementById("calcTotalResult").textContent = "₹" + total.toLocaleString("en-IN", { minimumFractionDigits: 2 });
     }
-    computePayout();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      runPayoutCalc();
+      const ctx = document.getElementById("mspTrendChart")?.getContext("2d");
+      if (ctx) {
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["2022-23", "2023-24", "2024-25", "2025-26", "2026-27"],
+            datasets: [
+              {
+                label: "Mustard (सरसों)",
+                data: [5050, 5450, 5650, 5650, 5950],
+                borderColor: "#ca8a04",
+                tension: 0.3
+              },
+              {
+                label: "Wheat (गेहूं)",
+                data: [2015, 2125, 2275, 2275, 2425],
+                borderColor: "#16a34a",
+                tension: 0.3
+              }
+            ]
+          },
+          options: { responsive: true }
+        });
+      }
+    });
   </script>
 </body>
 </html>

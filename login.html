@@ -13,7 +13,7 @@
       <a href="index.html" class="brand">
         <span class="brand-icon">🌾</span>
         <div>
-          <div class="brand-title">ई-उपार्जन Pro</div>
+          <div class="brand-title">मंडी Saathi</div>
           <div class="brand-subtitle">Smart Agri-Procurement</div>
         </div>
       </a>
@@ -22,37 +22,44 @@
   </nav>
 
   <main class="main-content" style="max-width: 480px;">
-    <div class="card">
-      <div class="tab-container" style="margin-bottom: 20px;">
-        <button type="button" class="tab-btn active" id="roleFarmerBtn">👨‍🌾 Farmer Login</button>
-        <button type="button" class="tab-btn" id="roleOperatorBtn">🏢 Mandi Operator</button>
-      </div>
+    <div class="card" style="max-width: 440px; margin: 40px auto;">
+  
+  <!-- Role Switcher Tabs -->
+  <div class="tab-container">
+    <button type="button" class="tab-btn active" id="roleFarmerBtn" onclick="switchRole('FARMER')">👨‍🌾 Farmer Login</button>
+    <button type="button" class="tab-btn" id="roleOperatorBtn" onclick="switchRole('OPERATOR')">🏢 Mandi Operator</button>
+  </div>
 
-      <div class="card-header" style="margin-bottom: 16px;">
-        <h2 class="card-title" id="loginHeaderTitle">Farmer Portal Sign In</h2>
-        <p class="card-desc" id="loginHeaderSubtitle">Access slot reservation, token slips, and live payment DBT tracking.</p>
-      </div>
+  <!-- Header Text -->
+  <h2 class="card-title" id="loginHeaderTitle">Farmer Portal Sign In</h2>
+  <p class="card-desc" id="loginHeaderSubtitle">Access slot reservation, token slips, and live payment DBT tracking.</p>
 
-      <form id="authForm">
-        <div class="form-group" style="margin-bottom: 14px;">
-          <label id="identifierLabel">Mobile Number *</label>
-          <input type="text" id="authIdentifier" placeholder="10-digit registered number" required />
-        </div>
+  <!-- Login Form -->
+  <form id="authForm">
+    
+    <!-- Primary Identifier -->
+    <div class="form-group" style="margin-bottom: 16px;">
+      <label id="identifierLabel">Mobile Number *</label>
+      <input type="text" id="authIdentifier" placeholder="10-digit registered number" required />
+    </div>
 
-        <div class="form-group" style="margin-bottom: 14px;">
-          <label>Password / Access PIN *</label>
-          <input type="password" id="authPassword" placeholder="Enter password or 4-digit PIN" required />
-        </div>
+    <!-- Password / PIN -->
+    <div class="form-group" style="margin-bottom: 16px;">
+      <label>Password / Access PIN *</label>
+      <input type="password" id="authPassword" placeholder="Enter password or 4-digit PIN" required />
+    </div>
 
-        <div id="operatorFieldGroup" style="display: none; margin-bottom: 14px;">
-          <div class="form-group">
-            <label>Mandi Yard Station ID *</label>
-            <input type="text" id="authMandiStation" placeholder="e.g. BARAUT-GATE-01" />
-          </div>
-        </div>
+    <!-- Operator-Only Field (Hidden for Farmers by default) -->
+    <div class="form-group" id="operatorFieldGroup" style="display: none; margin-bottom: 16px;">
+      <label>Mandi Yard Station ID *</label>
+      <input type="text" id="authMandiStation" placeholder="e.g. BARAUT-GATE-01" />
+    </div>
 
-        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Sign In to Portal ➔</button>
-      </form>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Sign In to Portal ➔</button>
+
+  </form>
+</div>
 
       <div style="margin-top: 20px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px dashed var(--border);">
         <span style="font-size: 0.75rem; font-weight: bold; color: var(--text-muted); display: block; margin-bottom: 8px;">

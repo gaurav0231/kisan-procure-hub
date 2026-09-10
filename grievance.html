@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Helpdesk & Grievance - Kisan Portal</title>
+  <title>Farmer Grievance Cell • ई-उपार्जन Pro</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,61 +22,49 @@
   </nav>
 
   <main class="main-content">
-    <div class="card">
-      <h2 class="card-title">Mandi Grievance Redressal Cell</h2>
-      <p class="card-desc">Raise concerns regarding moisture grading disputes, weighbridge differences, or delayed bank credits.</p>
+    <div class="card" style="max-width: 650px; margin: 20px auto;">
+      <h2 class="card-title">📢 Farmer Helpdesk & Dispute Cell</h2>
+      <p class="card-desc">Raise official tickets for quality deductions, scale calibration disputes, or DBT delays.</p>
 
       <form id="grievanceForm">
         <div class="form-row">
           <div class="form-group">
-            <label>Token ID or Mobile *</label>
-            <input type="text" id="gToken" placeholder="e.g. TKN-2026-9041" required />
+            <label>Token ID / Pass Number *</label>
+            <input type="text" placeholder="e.g. TKN-2026-9041" required />
           </div>
           <div class="form-group">
-            <label>Procurement Mandi Center *</label>
-            <select id="gCenter" required>
-              <option value="Baraut Central Mandi Yard">Baraut Central Mandi Yard</option>
-              <option value="Khekra Sub-Center">Khekra Sub-Center</option>
-              <option value="Baghpat Main Mandi">Baghpat Main Mandi</option>
+            <label>Grievance Category *</label>
+            <select required>
+              <option value="QC_DISPUTE">Moisture / QC Deduction Dispute</option>
+              <option value="SCALE_DISPUTE">Weighbridge Scale Discrepancy</option>
+              <option value="DBT_DELAY">DBT Direct Transfer Delay (> 48 hrs)</option>
+              <option value="GATE_DELAY">Unwarranted Yard Gate Waiting</option>
             </select>
           </div>
         </div>
 
         <div class="form-group" style="margin-bottom: 16px;">
-          <label>Category of Dispute *</label>
-          <select id="gCategory" required>
-            <option value="Moisture & Quality Dispute">Moisture & Quality Dispute (Unfair Deduction)</option>
-            <option value="Weighbridge Discrepancy">Weighbridge Weight Discrepancy</option>
-            <option value="Payment Delay (DBT)">Payment Delay (DBT not received > 72 hours)</option>
-            <option value="Gate Entry Denial">Denied Entry despite Valid Slot Token</option>
-            <option value="Other">Other Operational Issue</option>
-          </select>
+          <label>Describe the Discrepancy *</label>
+          <textarea rows="4" placeholder="Provide details regarding the yard station, operator, or scale error..." required></textarea>
         </div>
 
-        <div class="form-group" style="margin-bottom: 16px;">
-          <label>Explain your grievance in detail *</label>
-          <textarea id="gDescription" rows="4" placeholder="Mention the exact truck number, weighbridge gate, and operator details..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit Grievance Ticket ➔</button>
+        <button type="submit" class="btn btn-primary">File Official Grievance ➔</button>
       </form>
 
-      <div id="ticketResult" class="token-slip" style="display: none; margin-top: 24px; background: #fffbeb; border-color: #fde68a;">
-        <div class="slip-header">
-          <div>
-            <span style="font-size: 0.75rem; background: #fef3c7; color: #92400e; font-weight: bold; padding: 2px 8px; border-radius: 4px;">TICKET LODGED</span>
-            <div id="gTicketId" style="font-size: 1.3rem; font-weight: 800; font-family: monospace; color: #92400e;">GRV-8192</div>
-          </div>
-          <span style="color: #b45309; font-weight: bold; font-size: 0.85rem;">Status: Under Review</span>
-        </div>
-        <p style="font-size: 0.85rem; color: #451a03; line-height: 1.6;">
-          Your ticket has been registered with the Assistant Mandi Secretary. An inspection officer will review the digital weighbridge scales and contact you within 24 working hours.
-        </p>
+      <div id="ticketResult" style="display: none; margin-top: 20px; background: var(--slip-bg); border: 1px solid var(--border); padding: 16px; border-radius: 10px;">
+        <span style="color: var(--primary); font-weight: 800;">Ticket Successfully Registered!</span>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Reference ID: <strong id="gTicketId" style="color: var(--text-dark);"></strong> (Expected resolution: within 24 hours).</p>
       </div>
     </div>
   </main>
 
-  <footer>Department of Agricultural Logistics & Farmers Welfare • © 2026</footer>
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <p>Department of Agricultural Logistics & Mandi Affairs • Unified National Procurement Network</p>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
