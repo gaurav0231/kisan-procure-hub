@@ -41,6 +41,7 @@ body.dark-mode {
   --input-bg: #0f172a;
 }
 
+
 body {
   min-height: 100vh;
   background: var(--bg-gradient);
